@@ -12,13 +12,13 @@
     <header>
         <div class="container header">
             <h1>Library</h1>
-            <button class="button">Log in</button>
+            <button class="button grey-btn">Log in</button>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <button class="button">+ Add book</button>
+            <button class="button grey-btn" id="addBookBtn">+ Add book</button>
             <div class="books"></div>
         </div>
     </main>
@@ -28,5 +28,20 @@
             Copyright &copy; 2022 Utkarsh
         </div>
     </footer>
+
+    <div id="modal" class="modal">
+       <form>
+        <h2>Add new book</h2>
+        <input type="text" name="Title" placeholder="Title" required maxlength="100">
+        <input type="text" name="Author" placeholder="Author" required maxlength="100">
+        <input type="number" name="Pages" placeholder="Pages" required max="10000">
+        <div class="read">
+            <label for="read">Have you read it?</label>
+            <input type="checkbox" name="read" id="read">
+        </div>
+        <button type="submit" class="button green-btn">Submit</button>
+       </form>
+    </div>
+    <div id="overlay"></div>
 </body>
 </html>

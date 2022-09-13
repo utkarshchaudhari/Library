@@ -32,13 +32,20 @@ header{
     cursor: pointer;
     border: none;
     border-radius: 10px;
-    background-color: #F0F0F0;
     padding: 10px 15px;
     transition: all 150ms ease-in-out;
 }
 
 .button:hover{
     filter: brightness(90%);
+}
+
+.grey-btn{
+    background-color: #F0F0F0;
+}
+
+.green-btn{
+    background-color: #9FFF9C;
 }
 
 main{
@@ -60,4 +67,64 @@ main .button{
     justify-content: center;
     align-items: center;
     font-weight: 400;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10;
+    text-align: center;
+    width: 300px;
+    border-radius: 10px;
+    transition: all 200ms ease-in-out;
+    background-color: #F0F0F0;
+    padding: 20px;
+}
+
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form h2{
+    font-size: 22px;
+}
+
+form input{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input:focus{
+    outline: none;
+}
+
+form .read{
+    font-size: 18px;
+}
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
 }
