@@ -1,31 +1,65 @@
 const addBook = document.getElementById('addBookBtn');
 const modal = document.getElementById('modal');
 const overlay = document.getElementById('overlay');
+const form = document.getElementById('form');
 
-function Book(title, author, pages, read){
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
-    // this.info = function () {
-    //     return `The ${title} by ${author}, ${pages} pages, ${read}`
-    // }
 }
 
 Book.prototype.info = function () {
-    return `The ${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
+    return `The ${this.title} by ${this.author}, ${this.pages} pages, read status is ${this.read}`
 }
 
-const theHobbit = new Book('Hobbit', 'vk', 300, 'yes read')
-
-console.log(theHobbit.info())
 
 addBook.addEventListener('click', () => {
-    modal.classList.add('active')
-    overlay.classList.add('active')
+    modal.classList.add('active');
+    overlay.classList.add('active');
 })
 
 overlay.addEventListener('click', () => {
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
 })
+
+form.onsubmit = (e) => {
+    e.preventDefault();
+    addBookToLibrary();
+}
+
+function addBookToLibrary() {
+    let book = new Book(
+        document.getElementById('title').value,
+        document.getElementById('author').value,
+        document.getElementById('pages').value,
+        document.getElementById('read').checked ? true : false
+    )
+
+    myLibrary.push(book);
+    document.forms[0].reset();
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+    displayBooks(book);
+}
+
+function displayBooks(book) {
+    console.log(book)
+    let rStatus, cssClass;
+    book.read === true ? (rStatus = 'Read', cssClass = 'green-btn') : (rStatus = 'Not read', cssClass = 'red-btn');
+
+    document.querySelector('.books').innerHTML +=
+        `<div class="book">
+        <p>"${book.title}"</p>
+        <p>${book.author}</p>
+        <p>${book.pages}</p>
+        <button id="rBtn" class="button ${cssClass}">${rStatus}</button>
+        <button class="button grey-btn">Remove</button>
+        </div>`;
+}
+
+

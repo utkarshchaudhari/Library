@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="container header">
@@ -30,18 +32,19 @@
     </footer>
 
     <div id="modal" class="modal">
-       <form>
-        <h2>Add new book</h2>
-        <input type="text" name="Title" placeholder="Title" required maxlength="100">
-        <input type="text" name="Author" placeholder="Author" required maxlength="100">
-        <input type="number" name="Pages" placeholder="Pages" required max="10000">
-        <div class="read">
-            <label for="read">Have you read it?</label>
-            <input type="checkbox" name="read" id="read">
-        </div>
-        <button type="submit" class="button green-btn">Submit</button>
-       </form>
+        <form id="form">
+            <h2>Add new book</h2>
+            <input type="text" name="Title" id="title" placeholder="Title" required maxlength="100">
+            <input type="text" name="Author" id="author" placeholder="Author" required maxlength="100">
+            <input type="number" name="Pages" id="pages" placeholder="Pages" required max="10000">
+            <div class="read">
+                <label for="read">Have you read it?</label>
+                <input type="checkbox" name="read" id="read">
+            </div>
+            <button type="submit" class="button green-btn">Submit</button>
+        </form>
     </div>
     <div id="overlay"></div>
 </body>
+
 </html>
