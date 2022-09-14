@@ -56,7 +56,7 @@ function displayBooks(book) {
         <p>"${book.title}"</p>
         <p>${book.author}</p>
         <p>${book.pages}</p>
-        <button id="rBtn" class="button ${cssClass}" onclick="toggleButton()">${rStatus}</button>
+        <button id="rBtn-${myLibrary.indexOf(book)}" class="button ${cssClass}" data-id="${myLibrary.indexOf(book)}" onclick="toggleButton()">${rStatus}</button>
         <button class="button grey-btn" data-id="${myLibrary.indexOf(book)}" onclick="removeBook()">Remove</button>
         </div>`;
 }
@@ -65,4 +65,22 @@ function removeBook(){
     let index = event.target.getAttribute('data-id');
     myLibrary.splice(index,1);
     document.getElementById(`book-${index}`).remove();
+}
+
+function toggleButton(){
+    let index = event.target.getAttribute('data-id');
+    let element = document.getElementById(`rBtn-${index}`);
+
+    if(myLibrary[index].read === true){
+        myLibrary[index].read = false;
+        element.textContent = 'Not read';
+        element.classList.remove('green-btn');
+        element.classList += ' red-btn';
+    }
+    else if(myLibrary[index].read === false){
+        myLibrary[index].read = true;
+        element.textContent = 'Read';
+        element.classList.remove('red-btn');
+        element.classList += ' green-btn';
+    }
 }
