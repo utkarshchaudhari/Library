@@ -48,18 +48,21 @@ function addBookToLibrary() {
 }
 
 function displayBooks(book) {
-    console.log(book)
     let rStatus, cssClass;
     book.read === true ? (rStatus = 'Read', cssClass = 'green-btn') : (rStatus = 'Not read', cssClass = 'red-btn');
 
     document.querySelector('.books').innerHTML +=
-        `<div class="book">
+        `<div class="book" id="book-${myLibrary.indexOf(book)}">
         <p>"${book.title}"</p>
         <p>${book.author}</p>
         <p>${book.pages}</p>
-        <button id="rBtn" class="button ${cssClass}">${rStatus}</button>
-        <button class="button grey-btn">Remove</button>
+        <button id="rBtn" class="button ${cssClass}" onclick="toggleButton()">${rStatus}</button>
+        <button class="button grey-btn" data-id="${myLibrary.indexOf(book)}" onclick="removeBook()">Remove</button>
         </div>`;
 }
 
-
+function removeBook(){
+    let index = event.target.getAttribute('data-id');
+    myLibrary.splice(index,1);
+    document.getElementById(`book-${index}`).remove();
+}
