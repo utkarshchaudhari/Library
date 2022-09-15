@@ -16,6 +16,7 @@ Book.prototype.info = function () {
     return `The ${this.title} by ${this.author}, ${this.pages} pages, read status is ${this.read}`
 }
 
+// display modal
 
 addBook.addEventListener('click', () => {
     modal.classList.add('active');
@@ -61,23 +62,23 @@ function displayBooks(book) {
         </div>`;
 }
 
-function removeBook(){
+function removeBook() {
     let index = event.target.getAttribute('data-id');
-    myLibrary.splice(index,1);
+    myLibrary.splice(index, 1);
     document.getElementById(`book-${index}`).remove();
 }
 
-function toggleButton(){
+function toggleButton() {
     let index = event.target.getAttribute('data-id');
     let element = document.getElementById(`rBtn-${index}`);
 
-    if(myLibrary[index].read === true){
+    if (myLibrary[index].read === true) {
         myLibrary[index].read = false;
         element.textContent = 'Not read';
         element.classList.remove('green-btn');
         element.classList += ' red-btn';
     }
-    else if(myLibrary[index].read === false){
+    else if (myLibrary[index].read === false) {
         myLibrary[index].read = true;
         element.textContent = 'Read';
         element.classList.remove('red-btn');
